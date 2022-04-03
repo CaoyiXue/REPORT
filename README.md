@@ -36,23 +36,29 @@ std::pair<double, double> GetPosition(std::string name);
 
 ### Examples:
 1. 
+```shell
 Please input a location:Hill & Adams
 *************************Results******************************
 Latitude: 34.0262 Longitude: -118.27
 **************************************************************
 Time taken by function: 5 ms
+```
 2. 
+```shell
 Please input a location:Central Adult Senior High
 *************************Results******************************
 Latitude: 34.0338 Longitude: -118.267
 **************************************************************
 Time taken by function: 5 ms
+```
 3. 
+```shell
 Please input a location:Expo/Western 1
 *************************Results******************************
 Latitude: 34.0184 Longitude: -118.31
 **************************************************************
 Time taken by function: 3 ms
+```
 
 ### Observation:
 Time complexity in worst case should be O(n) in which n is number of nodes. 
@@ -86,6 +92,7 @@ std::string FindClosestName(std::string name);
 
 ### Examples:
 1. 
+```shell
 Please input a location:Hill & 11
 *************************Results******************************
 No matched locations.
@@ -93,7 +100,9 @@ Did you mean Hill & 11th instead of Hill & 11? [y/n]y
 Latitude: 34.04 Longitude: -118.26
 **************************************************************
 Time taken by function: 5 ms
+```
 2. 
+```shell
 Please input a location:KF
 *************************Results******************************
 No matched locations.
@@ -101,7 +110,9 @@ Did you mean KFC instead of KF? [y/n]y
 Latitude: 34.0261 Longitude: -118.278
 **************************************************************
 Time taken by function: 3 ms
+```
 3. 
+```shell
 Please input a location:Rolphs
 *************************Results******************************
 No matched locations.
@@ -109,6 +120,7 @@ Did you mean Ralphs instead of Rolphs? [y/n]y
 Latitude: 34.0318 Longitude: -118.291
 **************************************************************
 Time taken by function: 5 ms
+```
 
 ### Observation:
 Assume maximum length of node's name is L, the number of nodes is n. In worst case, the running time is L*n, so the time complexity is O(n). Therefore, the function time when we type in wrong name is roughtly same as the function time when we type in right name.
