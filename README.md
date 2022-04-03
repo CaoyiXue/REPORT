@@ -45,9 +45,9 @@ int CalculateEditDistance(std::string a, std::string b);
 ### Description:
 1. Create vector with shape (a.length+1, b.length+1). Initialize the base case, for example:\
 a.length = 3, b.length = 2;\
-    [[0,1,2,3,4],\
-     [1,0,0,0,0],\
-     [2,0,0,0,0]]\
+    [0,1,2,3,4]\
+    [1,0,0,0,0]\
+    [2,0,0,0,0]
 2. If the size of input is greater than the size of node’s name, we skip this node.
 3. Otherwise, convert input name and node's name to lower cases. 
 4. Then, compare input name and substring of node name from the beginning which have same length.
