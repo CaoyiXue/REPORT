@@ -22,7 +22,7 @@ Time taken by function: 5 ms
 Time taken by function: 5 ms
 
 ### Observation:
-Different size of inputs need roughly the same time because we need to traverse all nodes in the data. Time complexity is O(n), n is number of nodes. But, when we type in longer name, running time will decrease a little because we can skip more nodes with shorter name.
+Different size of inputs need roughly the same time because we need to traverse all nodes in the data. Time complexity is O(n), n is number of nodes. When we type in longer name, running time will decrease a little because we can skip more nodes with shorter name.
 
 ## Step 2-1: Find the place's Coordinates in the Map
 
@@ -34,6 +34,26 @@ std::pair<double, double> GetPosition(std::string name);
 1. Traverse all nodes on the map.
 2. If the name of input is equal to one node’s name, return this node latitude and longitude.
 
+### Examples:
+1. 
+Please input a location:Hill & Adams
+*************************Results******************************
+Latitude: 34.0262 Longitude: -118.27
+**************************************************************
+Time taken by function: 5 ms
+2. 
+Please input a location:Central Adult Senior High
+*************************Results******************************
+Latitude: 34.0338 Longitude: -118.267
+**************************************************************
+Time taken by function: 5 ms
+3. 
+Please input a location:Expo/Western 1
+*************************Results******************************
+Latitude: 34.0184 Longitude: -118.31
+**************************************************************
+Time taken by function: 3 ms
+
 ### Observation:
 Time complexity in worst case should be O(n) in which n is number of nodes. 
 
@@ -43,7 +63,7 @@ Time complexity in worst case should be O(n) in which n is number of nodes.
 int CalculateEditDistance(std::string a, std::string b);
 ```
 ### Description:
-1. Create vector with shape (a.length+1, b.length+1). Initialize the base case, for example:\
+1. Create vector "res" with shape (a.length+1, b.length+1). Initialize the base case, for example:\
 a.length = 3, b.length = 2;\
     [0,1,2,3,4]\
     [1,0,0,0,0]\
@@ -51,6 +71,44 @@ a.length = 3, b.length = 2;\
 2. From i = 1, j = 1, using following equation to update:\
     if the i-1th character of a == the j-1th character of b, res[i][j] = min(res[i-1][j], res[i][j-1], res[i-1][j-1])\
     if the i-1th character of a != the j-1th character of b, res[i][j] = min(res[i-1][j], res[i][j-1], res[i-1][j-1])+1
-3. Otherwise, convert input name and node's name to lower cases. 
-4. Then, compare input name and substring of node name from the beginning which have same length.
-5. If they are equal, push the node name into result vector.
+3. Finally, return bottom-right corner element of res, which is res[a.length()][b.length()]
+
+### Observation:
+Time complexity is O((a.length+1) * (b.length+1)) and Memory size is (a.length+1) * (b.length+1)
+
+```c++
+std::string FindClosestName(std::string name);
+```
+### Description:
+1. Initilize "min" as INT_MAX, "tmp" as empty string. Traverse all nodes on the map. 
+2. If EditDistance between input name and node's name is less than "min", update min to current EditDistance and update tmp to current node's name.
+3. Finally, return the ClosestName "tmp"
+
+### Examples:
+1. 
+Please input a location:Hill & 11
+*************************Results******************************
+No matched locations.
+Did you mean Hill & 11th instead of Hill & 11? [y/n]y
+Latitude: 34.04 Longitude: -118.26
+**************************************************************
+Time taken by function: 5 ms
+2. 
+Please input a location:KF
+*************************Results******************************
+No matched locations.
+Did you mean KFC instead of KF? [y/n]y
+Latitude: 34.0261 Longitude: -118.278
+**************************************************************
+Time taken by function: 3 ms
+3. 
+Please input a location:Rolphs
+*************************Results******************************
+No matched locations.
+Did you mean Ralphs instead of Rolphs? [y/n]y
+Latitude: 34.0318 Longitude: -118.291
+**************************************************************
+Time taken by function: 5 ms
+
+### Observation:
+Assume maximum length of node's name is L, the number of nodes is n. In worst case, the running time is L*n, so the time complexity is O(n). Therefore, the function time when we type in wrong name is roughtly same as the function time when we type in right name.
