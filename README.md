@@ -48,7 +48,9 @@ a.length = 3, b.length = 2;\
     [0,1,2,3,4]\
     [1,0,0,0,0]\
     [2,0,0,0,0]
-2. If the size of input is greater than the size of node’s name, we skip this node.
+2. From i = 1, j = 1, using following equation to update:\
+    if the i-1th character of a == the j-1th character of b, res[i][j] = min(res[i-1][j], res[i][j-1], res[i-1][j-1])\
+    if the i-1th character of a != the j-1th character of b, res[i][j] = min(res[i-1][j], res[i][j-1], res[i-1][j-1])+1
 3. Otherwise, convert input name and node's name to lower cases. 
 4. Then, compare input name and substring of node name from the beginning which have same length.
 5. If they are equal, push the node name into result vector.
