@@ -3,7 +3,7 @@
 ```c++
 std::vector<std::string> Autocomplete(std::string name);
 ```
-### Descreiption:
+### Description:
 1. Traverse all nodes on the map.
 2. If the size of input is greater than the size of node’s name, we skip this node.
 3. Otherwise, convert input name and node's name to lower cases. 
@@ -11,7 +11,7 @@ std::vector<std::string> Autocomplete(std::string name);
 5. If they are equal, push the node name into result vector.
 
 ### Examples:
-1. chi ==> Chinese Street Food, Chick-fil-A, Chipotle.\ 
+1. chi ==> Chinese Street Food, Chick-fil-A, Chipotle.\
 Time taken by function: 4 ms
 
 2. w ==> Washington & Broadway 1, Washington & Hope, Washington & Union 2, Washington & Hoover, Washington & Bonnie Brae, Washington & Union, Washington & Cherry, Washington & Figueroa 1,Washington & Figueroa, Washington & Vermont, Washington & Budlong, Washington & Normandie, Washington & Harvard, Washington & Westmoreland, Washington & Mariposa, Western & Exposition, Western & 36th, Western & Adams 3, Western & Adams 2, Western & Adams, Western & 24th 1, Western & 10 Off-ramp 1, Western & Washington, Western & 10 Off-ramp, Washington & Western, Washington & Arlington, Workshop Salon & Boutique, Warning Skate Shop, Western & 24th, Western & Jefferson 1, Washington & Olive, Western & Adams 1, Western & 29th 1, Wadsworth Elementary School, Western & Exposition 1, West Vernon Elementary School, Washington & Gramercy, Western & 29th, Which Wich?
@@ -30,7 +30,7 @@ Different size of inputs need roughly the same time because we need to traverse 
 std::pair<double, double> GetPosition(std::string name);
 ```
 
-### Descreiption:
+### Description:
 1. Traverse all nodes on the map.
 2. If the name of input is equal to one node’s name, return this node latitude and longitude.
 
@@ -40,10 +40,14 @@ Time complexity in worst case should be O(n) in which n is number of nodes.
 ## Step 2-2: Check edit distance between two location names
 
 ```c++
-int CalculateEditDistance(std::string name1, std::string name2);
+int CalculateEditDistance(std::string a, std::string b);
 ```
-### Descreiption:
-1. Traverse all nodes on the map.
+### Description:
+1. Create vector with shape (a.length+1, b.length+1). Initialize the base case, for example:\
+a.length = 3, b.length = 2;\
+    [[0,1,2,3,4],
+     [1,0,0,0,0],
+     [2,0,0,0,0]]
 2. If the size of input is greater than the size of node’s name, we skip this node.
 3. Otherwise, convert input name and node's name to lower cases. 
 4. Then, compare input name and substring of node name from the beginning which have same length.
