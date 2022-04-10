@@ -132,6 +132,13 @@ std::vector<std::string> CalculateShortestPath_Dijkstra(std::string &location1_n
                                                std::string &location2_name);
 ```
 ### Description:
+res store result of IDs\
+source get start node ID\
+target get end node ID\
+priority queue to update the minimum of distance,\
+in the queue std::pair<double, std::string> make sure it will compare double variable first\
+marks sets being visited node as 1, mark already visited node as 2\
+pre updates previous node\
 ```c++
 std::vector<std::string> res; // store result of IDs
 std::string source = GetID(location1_name); // get start node ID
