@@ -213,6 +213,7 @@ std::vector<std::string> CalculateShortestPath_Bellman_Ford(std::string &locatio
                                                std::string &location2_name);
 ```
 
+```shell
 **************************************************************
 * 5. Cycle Detection                                          
 **************************************************************
@@ -225,7 +226,8 @@ Please input the lower bound latitude(between 34.000 and 34.040):34.011
 there exist no cycle in the subgraph 
 **************************************************************
 Time taken by function: 0 ms
-
+```
+```shell
 **************************************************************
 * 5. Cycle Detection                                          
 **************************************************************
@@ -238,3 +240,4 @@ Please input the lower bound latitude(between 34.000 and 34.040):34.011
 there exists a cycle in the subgraph 
 **************************************************************
 Time taken by function: 0 ms
+```
