@@ -132,13 +132,14 @@ std::vector<std::string> CalculateShortestPath_Dijkstra(std::string &location1_n
                                                std::string &location2_name);
 ```
 ### Description:
-res store result of IDs\
-source get start node ID\
-target get end node ID\
-priority queue to update the minimum of distance,\
+1. 
+"res" store result of IDs\
+"source" get start node ID\
+"target" get end node ID\
+"q" priority queue to update the minimum of distance,\
 in the queue std::pair<double, std::string> make sure it will compare double variable first\
-marks sets being visited node as 1, mark already visited node as 2\
-pre updates previous node\
+"marks" sets being visited node as 1, mark already visited node as 2\
+"pre" updates previous node
 ```c++
 std::vector<std::string> res; // store result of IDs
 std::string source = GetID(location1_name); // get start node ID
@@ -154,6 +155,8 @@ std::map<std::string, int> marks;
 // update previous node
 std::map<std::string, std::string> pre;
 ```
+2. 
+create the distance unordered_map for initial case when none node is visited 
 ```c++
 // create the distance unordered_map for initial case when none node is visited 
 double infinite = std::numeric_limits<double>::max();
@@ -164,6 +167,15 @@ for (auto &node : data)
 }
 distances[source] = 0.0;
 ```
+3. 
+When q is not empty, 
+pop out the minimum of distance in the queue, let already visited nodes in the queue pop out if they are minimum.\
+mark being visited node as 1.\
+traverse neighbors of being visited node\
+if neighbor node is unvisited, calculate new distance from being visited node to this neighbor node\
+compare the already stored distance with new distance, if new distance smaller, update distance and previous node of this neighbor node\
+change being visited node to already visited node\
+when end node is being visited stop loop
 ```c++
 q.push(std::make_pair(0.0, source));
 while (!q.empty())
@@ -202,6 +214,9 @@ while (!q.empty())
   marks[u] = 2;
 }
 ```
+4. 
+use pre map to backtrack the path from end node to start node\
+reverse the result of IDs 
 ```c++
 if (marks[target] == 1)
 {//use pre map to backtrack the path from end node to start node
