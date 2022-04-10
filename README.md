@@ -124,3 +124,117 @@ Time taken by function: 5 ms
 
 ### Observation:
 Assume maximum length of node's name is L, the number of nodes is n. In worst case, the running time is L*n, so the time complexity is O(n). Therefore, the function time when we type in wrong name is roughtly same as the function time when we type in right name.
+
+## Step 3: CalculateShortestPath between two places
+
+```c++
+std::vector<std::string> CalculateShortestPath_Dijkstra(std::string &location1_name,
+                                               std::string &location2_name);
+```
+### Description:
+```c++
+std::vector<std::string> res; // store result of IDs
+std::string source = GetID(location1_name); // get start node ID
+std::string target = GetID(location2_name); // get end node ID
+/* priority queue to update the minimum of distance, in the queue
+std::pair<double, std::string> make sure it will compare double variable first
+*/
+std::priority_queue<std::pair<double, std::string>,
+    std::vector<std::pair<double, std::string>>,
+    std::greater<std::pair<double, std::string>>>q;
+// mark being visited node as 1, mark already visited node as 2
+std::map<std::string, int> marks;
+// update previous node
+std::map<std::string, std::string> pre;
+```
+```c++
+// create the distance unordered_map for initial case when none node is visited 
+double infinite = std::numeric_limits<double>::max();
+std::unordered_map<std::string, double> distances;
+for (auto &node : data)
+{
+    distances[node.first] = infinite;
+}
+distances[source] = 0.0;
+```
+```c++
+q.push(std::make_pair(0.0, source));
+while (!q.empty())
+{
+  std::string u = q.top().second;
+  q.pop();//pop out the minimum of distance in the queue
+  while (marks[u] == 2)
+  {
+ // let already visited nodes in the queue pop out if they are minimum
+    u = q.top().second;
+    q.pop();
+  }
+ // mark being visited node as 1
+  marks[u] = 1;
+  if (u == target)
+  {
+ //when end node is being visited stop loop
+    break;
+  }
+  for (auto &child : data[u].neighbors)
+  {// traverse neighbors of being visited node 
+    if (marks[child] != 1 && marks[child] != 2)
+    {// if neighbor node is unvisited, 
+    // calculate new distance from being visited node to this neighbor node
+      double alt = distances[u] + CalculateDistance(u, child);
+      if (distances[child] > alt)
+      {//compare the already stored distance with new distance
+      // if new distance smaller, update distance and previous node of this neighbor node 
+        distances[child] = alt;
+        q.push(std::make_pair(alt, child));
+        pre[child] = u;
+      }
+    }
+  }
+  //change being visited node to already visited node
+  marks[u] = 2;
+}
+```
+```c++
+if (marks[target] == 1)
+{//use pre map to backtrack the path from end node to start node
+  res.push_back(target);
+  while (target != source)
+  {
+    target = pre[target];
+    res.push_back(target);
+  }
+  //reverse the result of IDs 
+  std::reverse(res.begin(), res.end());
+}
+```
+```c++
+std::vector<std::string> CalculateShortestPath_Bellman_Ford(std::string &location1_name,
+                                               std::string &location2_name);
+```
+
+**************************************************************
+* 5. Cycle Detection                                          
+**************************************************************
+
+Please input the left bound longitude(between -118.320 and -118.250):-118.26
+Please input the right bound longitude(between -118.320 and -118.250):-118.275
+Please input the upper bound latitude(between 34.000 and 34.040):34.023
+Please input the lower bound latitude(between 34.000 and 34.040):34.011
+*************************Results******************************
+there exist no cycle in the subgraph 
+**************************************************************
+Time taken by function: 0 ms
+
+**************************************************************
+* 5. Cycle Detection                                          
+**************************************************************
+
+Please input the left bound longitude(between -118.320 and -118.250):-118.275
+Please input the right bound longitude(between -118.320 and -118.250):-118.26
+Please input the upper bound latitude(between 34.000 and 34.040):34.023
+Please input the lower bound latitude(between 34.000 and 34.040):34.011
+*************************Results******************************
+there exists a cycle in the subgraph 
+**************************************************************
+Time taken by function: 0 ms
