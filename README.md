@@ -55,6 +55,7 @@ Time taken by function: 3 ms
 Time complexity in worst case should be O(n) in which n is number of nodes. 
 
 ## Step 2-2: Check edit distance between two location names
+### Helper Function
 ```c++
 int CalculateEditDistance(std::string a, std::string b);
 ```
@@ -70,6 +71,7 @@ a.length = 3, b.length = 2;\
 3. Finally, return bottom-right corner element of res, which is res[a.length()][b.length()]
 ### Observation:
 Time complexity is O((a.length+1) * (b.length+1)) and Memory size is (a.length+1) * (b.length+1)
+### Main Function
 ```c++
 std::string FindClosestName(std::string name);
 ```
@@ -112,6 +114,7 @@ Time taken by function: 5 ms
 Assume maximum length of node's name is L, the number of nodes is n. In worst case, the running time is L*n, so the time complexity is O(n). Therefore, the function time when we type in wrong name is roughtly same as the function time when we type in right name.
 
 ## Step 3: CalculateShortestPath between two places
+### Dijkstra
 ```c++
 std::vector<std::string> CalculateShortestPath_Dijkstra(std::string &location1_name,
                                                std::string &location2_name);
@@ -215,7 +218,7 @@ if (marks[target] == 1)
   std::reverse(res.begin(), res.end());
 }
 ```
-
+### Bellman_Ford
 ```c++
 std::vector<std::string> CalculateShortestPath_Bellman_Ford(std::string &location1_name,
                                                std::string &location2_name);
