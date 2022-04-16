@@ -55,11 +55,11 @@ Time taken by function: 3 ms
 Time complexity in worst case should be O(n) in which n is number of nodes. 
 
 ## Step 2-2: Check edit distance between two location names
+### Description:
 ### 1. Helper Function
 ```c++
 int CalculateEditDistance(std::string a, std::string b);
 ```
-### Description:
 1. Create vector "res" with shape (a.length+1, b.length+1). Initialize the base case, for example:\
 a.length = 3, b.length = 2;\
     [0,1,2,3,4]\
@@ -75,7 +75,6 @@ Time complexity is O((a.length+1) * (b.length+1)) and Memory size is (a.length+1
 ```c++
 std::string FindClosestName(std::string name);
 ```
-### Description:
 1. Initilize "min" as INT_MAX, "tmp" as empty string. Traverse all nodes on the map. 
 2. If EditDistance between input name and node's name is less than "min", update min to current EditDistance and update tmp to current node's name.
 3. Finally, return the ClosestName "tmp"
@@ -114,12 +113,12 @@ Time taken by function: 5 ms
 Assume maximum length of node's name is L, the number of nodes is n. In worst case, the running time is L*n, so the time complexity is O(n). Therefore, the function time when we type in wrong name is roughtly same as the function time when we type in right name.
 
 ## Step 3: CalculateShortestPath between two places
+### Description:
 ### 1. Dijkstra
 ```c++
 std::vector<std::string> CalculateShortestPath_Dijkstra(std::string &location1_name,
                                                std::string &location2_name);
 ```
-### Description:
 1. 
 "res" store result of IDs\
 "source" get start node ID\
@@ -219,16 +218,16 @@ if (marks[target] == 1)
 }
 ```
 ### 2. Bellman_Ford
-```c++
-std::vector<std::string> CalculateShortestPath_Bellman_Ford(std::string &location1_name,
-                                               std::string &location2_name);
-```
-### Description:
+Helper Function:\
 GetPredecessors() for getting all of precessors of each nodes
 ```c++
 std::map<std::string, std::vector<std::string>> GetPredecessors();
 ```
 Main Function:\
+```c++
+std::vector<std::string> CalculateShortestPath_Bellman_Ford(std::string &location1_name,
+                                               std::string &location2_name);
+```
 1. 
 "path" store result of path\
 "distance" update distances from source to all of other nodes\
