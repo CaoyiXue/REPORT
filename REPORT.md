@@ -3,6 +3,9 @@
 std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c)
                  { return std::tolower(c); });
 ```
+```c++
+if (tmp.compare(0, name.length(), name) == 0)
+```
 ### Description:
 1. Traverse all nodes on the map.
 2. If the size of input is greater than the size of node’s name, we skip this node.
