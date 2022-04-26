@@ -62,3 +62,28 @@ std::vector<std::string> TrojanMap::CalculateShortestPath_Dijkstra(
 ```c++
  while (!q.empty())
 ```
+```c++
+for (auto &child : data[u].neighbors)
+{
+  if (marks.find(child) == marks.end())
+  {
+    if (distances.find(child) == distances.end())
+    {
+      double alt = distances[u] + CalculateDistance(u, child);
+      distances[child] = alt;
+      q.push(std::make_pair(alt, child));
+      pre[child] = u;
+    }
+    else
+    {
+      double alt = distances[u] + CalculateDistance(u, child);
+      if (distances[child] > alt)
+      {
+        distances[child] = alt;
+        q.push(std::make_pair(alt, child));
+        pre[child] = u;
+      }
+    }
+  }
+}
+```
