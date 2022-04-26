@@ -50,3 +50,12 @@ std::vector<std::string> TrojanMap::CalculateShortestPath_Dijkstra(
   std::map<std::string, int> marks;
   std::map<std::string, std::string> pre;
 ```
+```c++
+          double alt = distances[u] + CalculateDistance(u, child);
+          if (distances[child] > alt)
+          {
+            distances[child] = alt;
+            q.push(std::make_pair(alt, child));
+            pre[child] = u;
+          }
+         ```
