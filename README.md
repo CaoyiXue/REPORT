@@ -58,4 +58,7 @@ std::vector<std::string> TrojanMap::CalculateShortestPath_Dijkstra(
             q.push(std::make_pair(alt, child));
             pre[child] = u;
           }
-         ```
+```
+```c++
+ while (!q.empty())
+```
