@@ -93,4 +93,10 @@ while (marks[u] == 2)
   u = q.top().second;
   q.pop();
 }
+
+
+if (u == target)
+{
+  break;
+}
 ```
