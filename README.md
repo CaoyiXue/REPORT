@@ -87,3 +87,10 @@ for (auto &child : data[u].neighbors)
   }
 }
 ```
+```c++
+while (marks[u] == 2)
+{
+  u = q.top().second;
+  q.pop();
+}
+```
