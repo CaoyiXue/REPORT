@@ -35,3 +35,18 @@ std::string FindClosestName_noDP(std::string name);
 int CalculateEditDistance(std::string, std::string);
 std::string FindClosestName(std::string name);
 ```
+
+```c++
+std::vector<std::string> TrojanMap::CalculateShortestPath_Dijkstra(
+    std::string location1_name, std::string location2_name)
+{
+  std::vector<std::string> res;
+  std::string source = GetID(location1_name);
+  std::string target = GetID(location2_name);
+  std::priority_queue<std::pair<double, std::string>,
+                    std::vector<std::pair<double, std::string>>,
+                    std::greater<std::pair<double, std::string>>> q;
+  std::map<std::string, double> distances;
+  std::map<std::string, int> marks;
+  std::map<std::string, std::string> pre;
+```
