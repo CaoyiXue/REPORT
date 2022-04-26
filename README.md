@@ -25,3 +25,13 @@ Lotus Temple
 Time taken by function: 6 ms
 
 ```
+```c++
+int EDHelper(std::string& a, std::string& b, int m, int n);
+int CalculateEditDistance_noDP(std::string a, std::string b);
+std::string FindClosestName_noDP(std::string name);
+```
+
+```c++
+int CalculateEditDistance(std::string, std::string);
+std::string FindClosestName(std::string name);
+```
