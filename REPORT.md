@@ -1,6 +1,7 @@
 ## Step 1: Autocomplete the location name
 ```c++
-std::vector<std::string> Autocomplete(std::string name);
+std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c)
+                 { return std::tolower(c); });
 ```
 ### Description:
 1. Traverse all nodes on the map.
