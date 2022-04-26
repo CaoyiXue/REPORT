@@ -1,7 +1,16 @@
 # REPORT
 
 ```c++
-if (tmp.compare(0, name.length(), name) == 0)
+  if (marks[target] == 1)
+  {
+    res.push_back(target);
+    while (target != source)
+    {
+      target = pre[target];
+      res.push_back(target);
+    }
+    std::reverse(res.begin(), res.end());
+  }
 ```
 
 ```shell
