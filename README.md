@@ -1,16 +1,12 @@
 ```c++
-    for (auto &node : predecessor)
-    {
-      for (auto &p : node.second)
+    double tmp = distance[target];
+      if (tmp != infinite && node.first == target && tmp == distance[target])
       {
-        if (distance[p] < infinite)
-        {
-          double asl = distance[p] + CalculateDistance(p, node.first);
-          if (asl < distance[node.first])
-          {
-            distance[node.first] = asl;
-            pre_path[node.first] = p;
-          }
-        }
+        count++;
       }
+    }
+    if (count > 9)
+    {
+      break;
+    }
 ```
