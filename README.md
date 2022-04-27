@@ -1,11 +1,13 @@
 ```c++
-    for (int i = 1; i < size - 2; i++)
+  while (unchanged < 10)
+  {
+    unchanged++;
+    ....
+    if(new path is small)
     {
-      for (int k = i + 1; k < size - 1; k++)
-      {
-        .....
-      }
+        unchanged = 0
     }
+  }
 ```
 ```c++
 cur_path.push_back(location_ids[i]);
