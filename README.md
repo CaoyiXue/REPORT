@@ -1,5 +1,5 @@
 ```c++
-std::vector<std::vector<int>> TrojanMap::all_segments(int N)
+std::vector<std::vector<int>> all_segments(int N)
 {
   int end;
   std::vector<std::vector<int>> res;
