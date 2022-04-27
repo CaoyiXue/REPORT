@@ -1,11 +1,8 @@
 ```c++
-  if (isBacktracking)
-  {
-    if (cur_cost >= records.first)
-    {
-      return;
-    }
-  }
+void TrojanMap::TravellingTrojan_helper(
+    int cur_node, double cur_cost, std::vector<std::string> &cur_path,
+    std::pair<double, std::vector<std::vector<std::string>>> &records,
+    std::vector<std::string> &location_ids, bool &isBacktracking)
 ```
 ```c++
 cur_path.push_back(location_ids[i]);
