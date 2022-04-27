@@ -1,16 +1,14 @@
 # REPORT
 
 ```c++
-  if (marks[target] == 1)
-  {
-    res.push_back(target);
-    while (target != source)
-    {
-      target = pre[target];
-      res.push_back(target);
-    }
-    std::reverse(res.begin(), res.end());
-  }
+double infinite = std::numeric_limits<double>::max();
+std::map<std::string, std::vector<std::string>> predecessor = GetPredecessors();
+int count = 0;
+for (auto &node : predecessor)
+{
+  distance[node.first] = infinite;
+}
+distance[source] = 0.0;
 ```
 
 ```shell
