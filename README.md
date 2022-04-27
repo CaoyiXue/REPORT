@@ -5,7 +5,13 @@
     ....
     if(new path is small)
     {
-        unchanged = 0
+        unchanged = 0;
+        breakflag = true;
+        break;
+    }
+    if(breakflag)
+    {
+      break;
     }
   }
 ```
