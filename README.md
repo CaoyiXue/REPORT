@@ -1,8 +1,9 @@
 ```c++
-void TrojanMap::TravellingTrojan_helper(
-    int cur_node, double cur_cost, std::vector<std::string> &cur_path,
-    std::pair<double, std::vector<std::vector<std::string>>> &records,
-    std::vector<std::string> &location_ids, bool &isBacktracking)
+std::vector<std::string> TrojanMap::TwoOptSwap(int i, int k, std::vector<std::string> location_ids)
+{
+  std::reverse(location_ids.begin() + i, location_ids.begin() + k + 1);
+  return location_ids;
+}
 ```
 ```c++
 cur_path.push_back(location_ids[i]);
