@@ -3,16 +3,18 @@
   {
     unchanged++;
     ....
-    if(new path is small)
-    {
-        unchanged = 0;
-        breakflag = true;
+    for ...
+      for ...
+        if(new path is small)
+        {
+            unchanged = 0;
+            breakflag = true;
+            break;
+        }
+      if(breakflag)
+      {
         break;
-    }
-    if(breakflag)
-    {
-      break;
-    }
+      }
   }
 ```
 ```c++
