@@ -1,9 +1,10 @@
 ```c++
-std::vector<std::string> TrojanMap::TwoOptSwap(int i, int k, std::vector<std::string> location_ids)
-{
-  std::reverse(location_ids.begin() + i, location_ids.begin() + k + 1);
-  return location_ids;
-}
+    for (int i = 1; i < size - 2; i++)
+    {
+      for (int k = i + 1; k < size - 1; k++)
+      {
+      }
+    }
 ```
 ```c++
 cur_path.push_back(location_ids[i]);
