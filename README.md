@@ -1,21 +1,23 @@
 ```c++
-  while (unchanged < 10)
+std::vector<std::vector<int>> TrojanMap::all_segments(int N)
+{
+  int end;
+  std::vector<std::vector<int>> res;
+  for (int i = 1; i < N - 1; i++)
   {
-    unchanged++;
-    ....
-    for ...
-      for ...
-        if(new path is small)
-        {
-            unchanged = 0;
-            breakflag = true;
-            break;
-        }
-      if(breakflag)
+    for (int j = i + 2; j < N - 3; j++)
+    {
+      if (i==1) end = N - 2;
+      else end = N - 1;
+      
+      for (int k = j + 2; k < end; k++)
       {
-        break;
+        res.push_back({i,j,k});
       }
+    }
   }
+  return res;
+}
 ```
 ```c++
 cur_path.push_back(location_ids[i]);
