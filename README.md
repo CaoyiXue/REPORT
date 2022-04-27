@@ -1,14 +1,11 @@
 ```c++
-double tmp = distance[target];
-if (tmp != infinite && node.first == target && tmp == distance[target])
-{
-  count++;
-}
-}
-if (count > 9)
-{
-  break;
-}
+  if (isBacktracking)
+  {
+    if (cur_cost >= records.first)
+    {
+      return;
+    }
+  }
 ```
 ```c++
 cur_path.push_back(location_ids[i]);
