@@ -72,3 +72,27 @@ bool TrojanMap::CycleHelper(std::string current_id, std::map<std::string, int> &
                             std::map<std::string, std::string> &pre,
                             std::string &end, std::string &start)
 ```
+```c++
+  for (auto &loc : locations)
+  {
+    std::vector<std::string> tmp;
+    AdjListDeliver[loc] = tmp;
+  }
+  for (auto &dep : dependencies)
+  {
+    AdjListDeliver[dep[0]].push_back(dep[1]);
+  }
+  // If has cycle in this map, return empty vector
+  if (IsCycleDeliver())
+  {
+    return result;
+  }
+
+  for (auto &loc : locations)
+  {
+    if (marks[loc] != 1)
+    {
+      DeliverHelper(loc, marks, result);
+    }
+  }
+```
