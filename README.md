@@ -35,6 +35,7 @@ cur_path.pop_back();
     {
       for ....
       {
+        ....
         if (new_distance < records.first)
         {
           unchanged = 0;
