@@ -66,3 +66,9 @@ cur_path.pop_back();
         return true;
       }
 ```
+```c++
+bool TrojanMap::CycleHelper(std::string current_id, std::map<std::string, int> &marks,
+                            std::string parent_id, std::vector<double> &square,
+                            std::map<std::string, std::string> &pre,
+                            std::string &end, std::string &start)
+```
