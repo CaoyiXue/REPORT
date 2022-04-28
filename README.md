@@ -31,9 +31,9 @@ std::vector<std::vector<int>> TrojanMap::all_segments(int N)
 {
   int end;
   std::vector<std::vector<int>> res;
-  for (int i = 0; i < N - 1; i++)
+  for (int i = 0; i < N; i++)
   {
-    for (int j = i + 2; j < N - 2; j++)
+    for (int j = i + 2; j < N; j++)
     {
       if (i==0) end = N - 1;
       else end = N;
@@ -50,7 +50,7 @@ std::vector<std::vector<int>> TrojanMap::all_segments(int N)
 std::vector<std::string> TrojanMap::ThreeOptSwap(std::vector<int> segment, std::vector<std::string>& ids)
 {
   int A = segment[0]; int B = segment[0]+1; int C = segment[1];
-  int D = segment[1]+1; int E = segment[2]; int F = (segment[2]+1)%ids.size();
+  int D = segment[1]+1; int E = segment[2]; int F = (segment[2]+1)%(ids.size());
   std::vector<double> dis(8);
   std::vector<std::string> res;
   dis[0] = CalculateDistance(ids[A],ids[B])+CalculateDistance(ids[C],ids[D])+CalculateDistance(ids[E],ids[F]);
@@ -75,8 +75,8 @@ std::vector<std::string> TrojanMap::ThreeOptSwap(std::vector<int> segment, std::
     firstsegment.insert(firstsegment.end(),ids.begin(), ids.begin()+A+1);
   }
   else{
-    firstsegment.insert(firstsegment.end(), ids.begin()+F,ids.end()-1);
-    firstsegment.insert(firstsegment.end(), ids.begin()+1,ids.begin()+A+1);
+    firstsegment.insert(firstsegment.end(), ids.begin()+F,ids.end());
+    firstsegment.insert(firstsegment.end(), ids.begin(),ids.begin()+A+1);
   }
   std::vector<std::string> secondsegment(ids.begin()+B,ids.begin()+C+1);
   std::vector<std::string> thirdsegment(ids.begin()+D,ids.begin()+E+1);
@@ -88,7 +88,6 @@ std::vector<std::string> TrojanMap::ThreeOptSwap(std::vector<int> segment, std::
     res.insert(res.end(), firstsegment.begin(), firstsegment.end());
     res.insert(res.end(), secondsegment.begin(), secondsegment.end());
     res.insert(res.end(), thirdsegment.begin(), thirdsegment.end());
-    res.push_back(ids[0]);
     return res;
   }
   case 2:
@@ -97,7 +96,6 @@ std::vector<std::string> TrojanMap::ThreeOptSwap(std::vector<int> segment, std::
     std::reverse(secondsegment.begin(), secondsegment.end());
     res.insert(res.end(), secondsegment.begin(), secondsegment.end());
     res.insert(res.end(), thirdsegment.begin(), thirdsegment.end());
-    res.push_back(ids[0]);
     return res;
   }
   case 3:
@@ -106,7 +104,6 @@ std::vector<std::string> TrojanMap::ThreeOptSwap(std::vector<int> segment, std::
     res.insert(res.end(), secondsegment.begin(), secondsegment.end());
     std::reverse(thirdsegment.begin(), thirdsegment.end());
     res.insert(res.end(), thirdsegment.begin(), thirdsegment.end());
-    res.push_back(ids[0]);
     return res;
   }
   case 4:
@@ -116,7 +113,6 @@ std::vector<std::string> TrojanMap::ThreeOptSwap(std::vector<int> segment, std::
     res.insert(res.end(), secondsegment.begin(), secondsegment.end());
     std::reverse(thirdsegment.begin(), thirdsegment.end());
     res.insert(res.end(), thirdsegment.begin(), thirdsegment.end());
-    res.push_back(ids[0]);
     return res;
   }
   case 5:
@@ -126,7 +122,6 @@ std::vector<std::string> TrojanMap::ThreeOptSwap(std::vector<int> segment, std::
     res.insert(res.end(), secondsegment.begin(), secondsegment.end());
     std::reverse(thirdsegment.begin(), thirdsegment.end());
     res.insert(res.end(), thirdsegment.begin(), thirdsegment.end());
-    res.push_back(ids[0]);
     return res;
   }
   case 6:
@@ -136,7 +131,6 @@ std::vector<std::string> TrojanMap::ThreeOptSwap(std::vector<int> segment, std::
     std::reverse(secondsegment.begin(), secondsegment.end());
     res.insert(res.end(), secondsegment.begin(), secondsegment.end());
     res.insert(res.end(), thirdsegment.begin(), thirdsegment.end());
-    res.push_back(ids[0]);
     return res;
   }
   case 7:
@@ -147,7 +141,6 @@ std::vector<std::string> TrojanMap::ThreeOptSwap(std::vector<int> segment, std::
     res.insert(res.end(), secondsegment.begin(), secondsegment.end());
     std::reverse(thirdsegment.begin(), thirdsegment.end());
     res.insert(res.end(), thirdsegment.begin(), thirdsegment.end());
-    res.push_back(ids[0]);
     return res;
   }
   }
@@ -182,13 +175,14 @@ std::pair<double, std::vector<std::vector<std::string>>> TrojanMap::TravellingTr
     for (auto& s : all_seg)
     {
       std::vector<std::string> cur_ids = records.second.back();
+      cur_ids.pop_back();
       std::vector<std::string> new_ids = ThreeOptSwap(s, cur_ids);
-      new_ids = correct_order(new_ids, source);
-      new_ids.push_back(source);
       if (new_ids.empty())
       {
         continue;
       }
+      new_ids = correct_order(new_ids, source);
+      new_ids.push_back(source);
       double new_distance = CalculatePathLength(new_ids);
       if (new_distance < records.first)
       {
