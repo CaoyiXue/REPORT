@@ -50,3 +50,10 @@ cur_path.pop_back();
     }
   }
 ```
+```c++
+  while (unchanged < 60)
+  {
+    unchanged++;
+    for (auto& s : all_seg)
+    {
+```
