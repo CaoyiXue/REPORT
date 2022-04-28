@@ -169,7 +169,7 @@ std::pair<double, std::vector<std::vector<std::string>>> TrojanMap::TravellingTr
 
   std::vector<std::vector<int>> all_seg= all_segments(location_ids.size());
 
-  while (unchanged < 5)
+  while (unchanged < 1)
   {
     unchanged++;
     for (auto& s : all_seg)
