@@ -57,3 +57,12 @@ cur_path.pop_back();
     for (auto& s : all_seg)
     {
 ```
+
+```c++
+      if (marks[child_id] == 1 && child_id != parent_id)
+      {
+        end = current_id;
+        start = child_id;
+        return true;
+      }
+```
