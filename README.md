@@ -3,6 +3,7 @@ Before run main.sh, please run the following code in your shell to avoid unknown
 '''shell
 conda create --name ee660_caoyixue --file requirements.txt
 '''
+'''bash
 EE660_project
 ├── README.md
 ├── create_data.py
@@ -49,3 +50,4 @@ EE660_project
 │       ├── standardized_RandomPick.pkl
 │       └── standardized_SameClass.pkl
 └── utils.py
+'''
