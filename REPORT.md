@@ -1,5 +1,6 @@
 ## Step 1: Autocomplete the location name
 ```c++
+
 std::transform(name.begin(), name.end(), name.begin(), [](unsigned char c)
                  { return std::tolower(c); });
 ```
